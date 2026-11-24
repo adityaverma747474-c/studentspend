@@ -3,30 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentSpend | Expense Tracker</title>
+    <title>StudentSpend | Smart Expense Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <span class="logo-icon">₹</span>
-                <span>StudentSpend</span>
+                <div class="logo-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <span>Student<span class="logo-accent">Spend</span></span>
             </div>
-            <p class="menu-title">MENU</p>
+            <p class="menu-title">MAIN MENU</p>
             <nav>
-                <a href="#" class="active" data-view="dashboard">▦ Dashboard</a>
-                <a href="#" data-view="add">＋ Add Expense</a>
-                <a href="#" data-view="transactions">◷ Transactions</a>
-                <a href="#" data-view="analytics">▤ Analytics</a>
-                <a href="#" data-view="settings">⚙ Settings</a>
+                <a href="#" class="active" data-view="dashboard">
+                    <i class="fa-solid fa-grid-2"></i> Dashboard
+                </a>
+                <a href="#" data-view="add">
+                    <i class="fa-solid fa-circle-plus"></i> Add Expense
+                </a>
+                <a href="#" data-view="transactions">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Transactions
+                </a>
+                <a href="#" data-view="analytics">
+                    <i class="fa-solid fa-chart-pie"></i> Analytics
+                </a>
+                <a href="#" data-view="settings">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
             </nav>
             <div class="sidebar-bottom">
-                <p>Student Edition</p>
-                <small>Spend Smart. Save Better.</small>
+                <div class="sidebar-badge">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <p>Student Edition</p>
+                        <small>Spend Smart. Save Better.</small>
+                    </div>
+                </div>
             </div>
         </aside>
+
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <span>Student<span class="logo-accent">Spend</span></span>
+            </div>
+            <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -36,7 +66,9 @@
                     <p>Track your money, manage your life.</p>
                 </div>
                 <div class="profile">
-                    <div class="avatar">S</div>
+                    <div class="avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
                     <div>
                         <strong>Student</strong>
                         <small>College Account</small>
@@ -47,115 +79,154 @@
             <!-- ===== DASHBOARD VIEW ===== -->
             <div id="view-dashboard" class="view">
                 <section class="welcome">
-                    <div>
-                        <h1>Welcome back, Student! 👋</h1>
+                    <div class="welcome-text">
+                        <h1>Welcome back, Student! <span class="wave">👋</span></h1>
                         <p>Here's your financial overview for this month.</p>
+                    </div>
+                    <div class="welcome-art">
+                        <i class="fa-solid fa-wallet"></i>
                     </div>
                 </section>
 
                 <section class="cards">
-                    <div class="card">
-                        <p>Monthly Budget</p>
-                        <h2 id="statBudget">₹5,000</h2>
-                        <span class="card-note">Your monthly limit</span>
+                    <div class="card card-budget">
+                        <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="card-body">
+                            <p>Monthly Budget</p>
+                            <h2 id="statBudget">₹5,000</h2>
+                            <span class="card-note">Your monthly limit</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <p>Total Spent</p>
-                        <h2 id="statSpent">₹0</h2>
-                        <span class="card-note">This month</span>
+                    <div class="card card-spent">
+                        <div class="card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                        <div class="card-body">
+                            <p>Total Spent</p>
+                            <h2 id="statSpent">₹0</h2>
+                            <span class="card-note">This month</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <p>Remaining Balance</p>
-                        <h2 class="green" id="statRemaining">₹5,000</h2>
-                        <span class="card-note">Money left</span>
+                    <div class="card card-remaining">
+                        <div class="card-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                        <div class="card-body">
+                            <p>Remaining Balance</p>
+                            <h2 class="green" id="statRemaining">₹5,000</h2>
+                            <span class="card-note">Money left</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <p>Expenses</p>
-                        <h2 id="statCount">0</h2>
-                        <span class="card-note">Transactions recorded</span>
+                    <div class="card card-count">
+                        <div class="card-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="card-body">
+                            <p>Expenses</p>
+                            <h2 id="statCount">0</h2>
+                            <span class="card-note">Transactions recorded</span>
+                        </div>
                     </div>
                 </section>
 
-                <section class="panel">
-                    <div class="panel-heading">
-                        <h3>Monthly Budget</h3>
-                        <span id="monthLabel">November</span>
-                    </div>
-                    <div class="budget-info">
-                        <span id="budgetSpentLabel">₹0 spent</span>
-                        <span id="budgetTotalLabel">₹5,000 budget</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <p class="budget-message" id="budgetMessage"></p>
-                </section>
+                <div class="dashboard-grid">
+                    <section class="panel budget-panel">
+                        <div class="panel-heading">
+                            <h3><i class="fa-solid fa-chart-simple"></i> Monthly Budget</h3>
+                            <span class="badge" id="monthLabel">November</span>
+                        </div>
+                        <div class="budget-info">
+                            <span id="budgetSpentLabel">₹0 spent</span>
+                            <span id="budgetTotalLabel">₹5,000 budget</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="budget-message" id="budgetMessage"></p>
+                    </section>
 
-                <section class="panel">
-                    <div class="panel-heading">
-                        <h3>Recent Transactions</h3>
-                        <a href="#" id="viewAllLink">View All</a>
-                    </div>
-                    <div id="recentList"></div>
-                </section>
+                    <section class="panel recent-panel">
+                        <div class="panel-heading">
+                            <h3><i class="fa-solid fa-clock"></i> Recent Transactions</h3>
+                            <a href="#" id="viewAllLink">View All <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                        <div id="recentList"></div>
+                    </section>
+                </div>
 
                 <section class="tip">
-                    <h3>💡 Smart Saving Tip</h3>
-                    <p id="tipText">Small daily savings can make a big difference. Track every expense and try to save 10% of your monthly budget.</p>
+                    <div class="tip-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div>
+                        <h3>Smart Saving Tip</h3>
+                        <p id="tipText">Small daily savings can make a big difference. Track every expense and try to save 10% of your monthly budget.</p>
+                    </div>
                 </section>
             </div>
 
             <!-- ===== ADD EXPENSE VIEW ===== -->
             <div id="view-add" class="view hidden">
                 <section class="panel">
-                    <div class="panel-heading"><h3>Set Monthly Budget</h3></div>
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-crosshairs"></i> Set Monthly Budget</h3>
+                    </div>
                     <form id="budgetForm" class="form-row">
-                        <input type="number" id="budgetInput" min="1" placeholder="e.g. 5000" required>
-                        <button type="submit">Set Budget</button>
+                        <div class="input-group">
+                            <span class="input-prefix">₹</span>
+                            <input type="number" id="budgetInput" min="1" placeholder="e.g. 5000" required>
+                        </div>
+                        <button type="submit"><i class="fa-solid fa-check"></i> Set Budget</button>
                     </form>
                     <p class="budget-message">Current budget: <strong id="currentBudgetLabel">₹5,000</strong></p>
                 </section>
 
                 <section class="panel">
-                    <div class="panel-heading"><h3>Add New Expense</h3></div>
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-plus"></i> Add New Expense</h3>
+                    </div>
                     <form id="expenseForm">
-                        <label>Expense Name
-                            <input type="text" id="expName" placeholder="e.g. Lunch, Bus Fare, Notebook" required>
-                        </label>
-                        <label>Amount (₹)
-                            <input type="number" id="expAmount" min="1" placeholder="e.g. 100" required>
-                        </label>
-                        <label>Category
-                            <select id="expCategory">
-                                <option value="Food">Food</option>
-                                <option value="Transport">Transport</option>
-                                <option value="Education">Education</option>
-                                <option value="Shopping">Shopping</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </label>
-                        <label>Date
-                            <input type="date" id="expDate">
-                        </label>
-                        <button type="submit" class="wide-btn">＋ Add Expense</button>
+                        <div class="form-grid">
+                            <label>
+                                <span class="label-text"><i class="fa-solid fa-tag"></i> Expense Name</span>
+                                <input type="text" id="expName" placeholder="e.g. Lunch, Bus Fare, Notebook" required>
+                            </label>
+                            <label>
+                                <span class="label-text"><i class="fa-solid fa-coins"></i> Amount (₹)</span>
+                                <input type="number" id="expAmount" min="1" placeholder="e.g. 100" required>
+                            </label>
+                            <label>
+                                <span class="label-text"><i class="fa-solid fa-layer-group"></i> Category</span>
+                                <select id="expCategory">
+                                    <option value="Food">🍔 Food</option>
+                                    <option value="Transport">🚌 Transport</option>
+                                    <option value="Education">📚 Education</option>
+                                    <option value="Shopping">🛍️ Shopping</option>
+                                    <option value="Other">💸 Other</option>
+                                </select>
+                            </label>
+                            <label>
+                                <span class="label-text"><i class="fa-solid fa-calendar"></i> Date</span>
+                                <input type="date" id="expDate">
+                            </label>
+                        </div>
+                        <button type="submit" class="wide-btn"><i class="fa-solid fa-plus"></i> Add Expense</button>
                     </form>
-                    <p class="success-msg hidden" id="addSuccess">✅ Expense added! Dashboard updated.</p>
+                    <p class="success-msg hidden" id="addSuccess"><i class="fa-solid fa-circle-check"></i> Expense added! Dashboard updated.</p>
                 </section>
             </div>
 
             <!-- ===== TRANSACTIONS VIEW ===== -->
             <div id="view-transactions" class="view hidden">
                 <section class="panel">
-                    <div class="panel-heading"><h3>All Transactions</h3><span id="txnCountLabel"></span></div>
-                    <div class="form-row">
-                        <input type="text" id="searchInput" placeholder="Search expense...">
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-list"></i> All Transactions</h3>
+                        <span class="badge" id="txnCountLabel"></span>
+                    </div>
+                    <div class="form-row filter-row">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="searchInput" placeholder="Search expense...">
+                        </div>
                         <select id="filterCategory">
                             <option value="All">All Categories</option>
-                            <option value="Food">Food</option>
-                            <option value="Transport">Transport</option>
-                            <option value="Education">Education</option>
-                            <option value="Shopping">Shopping</option>
-                            <option value="Other">Other</option>
+                            <option value="Food">🍔 Food</option>
+                            <option value="Transport">🚌 Transport</option>
+                            <option value="Education">📚 Education</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Other">💸 Other</option>
                         </select>
                     </div>
                     <div id="allList"></div>
@@ -165,36 +236,90 @@
             <!-- ===== ANALYTICS VIEW ===== -->
             <div id="view-analytics" class="view hidden">
                 <section class="panel">
-                    <div class="panel-heading"><h3>Spending by Category</h3><span id="analyticsTotal"></span></div>
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Spending by Category</h3>
+                        <span class="badge" id="analyticsTotal"></span>
+                    </div>
                     <div id="categoryBars"></div>
                 </section>
                 <section class="panel">
-                    <div class="panel-heading"><h3>Summary</h3></div>
-                    <p class="summary-line">Biggest category: <strong id="topCategory">—</strong></p>
-                    <p class="summary-line">Budget used: <strong id="usedPercent">0%</strong></p>
-                    <p class="summary-line">Average expense: <strong id="avgExpense">₹0</strong></p>
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-clipboard-list"></i> Summary</h3>
+                    </div>
+                    <div class="summary-cards">
+                        <div class="summary-item">
+                            <i class="fa-solid fa-trophy"></i>
+                            <div>
+                                <small>Biggest Category</small>
+                                <strong id="topCategory">—</strong>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <div>
+                                <small>Budget Used</small>
+                                <strong id="usedPercent">0%</strong>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fa-solid fa-calculator"></i>
+                            <div>
+                                <small>Avg. Expense</small>
+                                <strong id="avgExpense">₹0</strong>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
 
             <!-- ===== SETTINGS VIEW ===== -->
             <div id="view-settings" class="view hidden">
                 <section class="panel">
-                    <div class="panel-heading"><h3>Settings</h3></div>
-                    <div class="setting-row">
-                        <span>Dark Mode</span>
-                        <button id="darkToggle" type="button">🌙 Turn On</button>
+                    <div class="panel-heading">
+                        <h3><i class="fa-solid fa-gear"></i> Settings</h3>
                     </div>
                     <div class="setting-row">
-                        <span>Reset all data (budget + expenses)</span>
-                        <button id="resetBtn" type="button" class="danger-btn">Reset Data</button>
+                        <div class="setting-info">
+                            <i class="fa-solid fa-moon"></i>
+                            <span>Dark Mode</span>
+                        </div>
+                        <button id="darkToggle" type="button"><i class="fa-solid fa-moon"></i> Turn On</button>
                     </div>
-                    <p class="budget-message">All data is saved in your browser (Local Storage) — refresh ke baad bhi data nahi jayega. Koi online database nahi hai.</p>
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Export Data (CSV)</span>
+                        </div>
+                        <button id="exportBtn" type="button" class="secondary-btn"><i class="fa-solid fa-file-export"></i> Export</button>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <i class="fa-solid fa-trash-can"></i>
+                            <span>Reset all data (budget + expenses)</span>
+                        </div>
+                        <button id="resetBtn" type="button" class="danger-btn"><i class="fa-solid fa-rotate-left"></i> Reset Data</button>
+                    </div>
+                    <div class="settings-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>All data is saved in your browser (Local Storage) — data persists across page refreshes. No external database is used.</p>
+                    </div>
                 </section>
             </div>
 
-            <footer>StudentSpend © 2026 | Made for Students</footer>
+            <footer>
+                <span>StudentSpend © 2026</span>
+                <span class="footer-dot">•</span>
+                <span>Made with <i class="fa-solid fa-heart" style="color:#ef4444"></i> for Students</span>
+            </footer>
         </main>
     </div>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastText"></span>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
